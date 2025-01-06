@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-blue-500 min-h-screen w-full">
+<nav x-data="{ open: false }" class="w-full">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="background-color:blue">
         <div class="flex justify-between h-16">
@@ -28,7 +28,6 @@
                 <x-nav-link href="#" class="hover:bg-blue-600 hover:text-white px-4 py-2 rounded text-white">
                     {{ __('Services') }}
                 </x-nav-link>
-
                 @guest
                 <x-nav-link :href="route('login')" :active="request()->routeIs('login')" class="hover:bg-blue-600 hover:text-white px-4 py-2 rounded text-white">
                     {{ __('Login') }}
@@ -37,6 +36,17 @@
                     {{ __('Signup') }}
                 </x-nav-link>
                 @endguest
+                @auth
+                <x-nav-link href="{{ route('profile.edit') }}" class="hover:bg-blue-600 hover:text-white px-4 py-2 rounded text-white">
+                    {{ __('Profile') }}
+                </x-nav-link>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <x-nav-link href="#" onclick="event.preventDefault(); this.closest('form').submit();" class="hover:bg-blue-600 hover:text-white px-4 py-2 rounded text-white">
+                        {{ __('Logout') }}
+                    </x-nav-link>
+                </form>
+                @endauth
             </div>
         </div>
     </div>
