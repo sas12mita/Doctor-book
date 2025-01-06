@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Specialization;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
@@ -11,7 +12,6 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**

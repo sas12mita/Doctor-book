@@ -182,57 +182,50 @@
             </aside>
 
             <!-- Main Content -->
+
             <main class="main-content">
-
-
-                <!-- Doctor Form -->
                 <div class="form-container">
-                    <form action="{{route('doctors.store') }}" method="POST">
+                    <form action="{{ route('doctors.update', $doctor->id) }}" method="POST">
                         @csrf
+                        @method('PUT') <!-- This tells Laravel to treat it as an update request -->
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Doctor's Name</label>
-                                <input type="text" id="name" name="name" required>
+                                <input type="text" id="name" name="name" value="{{ old('name', $doctor->user->name) }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
+                                <input type="email" id="email" name="email" value="{{ old('email', $doctor->user->email) }}" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input type="text" id="phone" name="phone" required>
+                                <input type="text" id="phone" name="phone" value="{{ old('phone', $doctor->user->phone) }}" required>
                             </div>
                             <div class="form-group">
-                            <label for="specialization">Specialization</label>
-                            <select id="specialization_id" name="specialization_id" required>
-                                <option value="" disabled selected>Select Specialization</option>
-                                @foreach ($specializations as $specialization)
-                                <option value="{{ $specialization->id }}">{{ $specialization->name }}</option>
-                                @endforeach
-                            </select>
+                                <label for="specialization">Specialization</label>
+                                <select id="specialization_id" name="specialization_id" required>
+                                    <option value="" disabled>Select Specialization</option>
+                                    @foreach ($specializations as $specialization)
+                                    <option value="{{ $specialization->id }}" {{ $doctor->specialization_id == $specialization->id ? 'selected' : '' }}>
+                                        {{ $specialization->name }}
+                                    </option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" id="qualification" name="qualification" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="password_confirmation">Confirm Password</label>
-                                <input type="password" id="password_confirmation" name="password_confirmation" required>
-                            </div>
-                        </div>
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="qualification">Qualification</label>
-                                <input type="text" id="qualification" name="qualification" required>
+                                <input type="text" id="qualification" name="qualification" value="{{ old('qualification', $doctor->qualification) }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="experience">Experience</label>
-                                <input type="text" id="experience" name="experience" required>
+                                <input type="text" id="experience" name="experience" value="{{ old('experience', $doctor->experience) }}" required>
                             </div>
                         </div>
 
@@ -240,20 +233,18 @@
                             <div class="form-group">
                                 <label for="role">Role</label>
                                 <select id="role" name="role" required>
-                                    <option value="doctor">Doctor</option>
+                                    <option value="doctor" {{ $doctor->role == 'doctor' ? 'selected' : '' }}>Doctor</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="address">Address</label>
-                                <input type="text" id="address" name="address" required>
+                                <input type="text" id="address" name="address" value="{{ old('address', $doctor->user->address) }}" required>
                             </div>
                         </div>
 
-
-
                         <div class="form-group">
-                            <button type="submit">Submit</button>
+                            <button type="submit">Update</button>
                         </div>
                     </form>
                 </div>
