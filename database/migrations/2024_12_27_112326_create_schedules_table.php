@@ -16,7 +16,7 @@ return new class extends Migration
                 $table->foreignId('doctor_id')->constrained()->cascadeOnDelete();
                 $table->time('start_time');
                 $table->time('end_time');
-                $table->string('day');
+                $table->date('date');
                 $table->enum('availability', ['available','unavailable'])->default('available');
                 $table->timestamps();
         });

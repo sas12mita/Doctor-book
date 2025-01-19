@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\Schedule;
 use App\Models\Specialization;
 use App\Models\User;
+use App\Services\TimeSlotService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -71,9 +73,32 @@ class DoctorController extends Controller
     /**
      * Display the specified resource.
      */
+    protected $timeSlotService;
+
+    // Inject the TimeSlotService into the controller
+    public function __construct(TimeSlotService $timeSlotService)
+    {
+        $this->timeSlotService = $timeSlotService;
+    }
+
     public function show(string $id)
     {
-        //
+        
+        $doctor = Doctor::findOrFail($id);
+
+        
+        $schedules = Schedule::where('doctor_id', $id)
+            ->where('date', '>=', now()) // Only future schedules
+            ->orderBy('date', 'asc')
+            ->get();
+
+        $timeSlots = $schedules->map(function ($schedule) {
+            return $this->timeSlotService->generateTimeSlots($schedule->start_time, $schedule->end_time);
+        });
+
+
+        // Pass doctor, schedules, and time slots to the view
+        return view('doctors.show', compact('doctor', 'schedules', 'timeSlots'));
     }
 
     /**

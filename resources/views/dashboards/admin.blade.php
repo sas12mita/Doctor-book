@@ -37,7 +37,7 @@
                             <span style="margin-left:10px">Specilization</span> </a>
                     </li>
                     <li>
-                        <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                        <a href="{{route('schedules.index')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
                             <i class="fas fa-calendar mr-2"></i>
                             <span style="margin-left:10px">Schedule</span>
                         </a>

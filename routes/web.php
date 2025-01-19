@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PatientReportController;
 use App\Http\Controllers\ProfileController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SpecializationController;
 use App\Models\PatientReport;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -24,7 +26,7 @@ Route::resource('doctors', DoctorController::class);
 Route::resource('schedules', ScheduleController::class);
 Route::resource('specilizations', SpecializationController::class);
 Route::resource('patientreports', PatientReportController::class);
-
+Route::get('/viewdoctors',[HomeController::class, 'doctor'])->name('viewdoctors');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

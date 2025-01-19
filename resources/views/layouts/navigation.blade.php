@@ -22,7 +22,7 @@
                 <x-nav-link href="#" class="hover:bg-blue-600 hover:text-white px-4 py-2 rounded text-white">
                     {{ __('Contact Us') }}
                 </x-nav-link>
-                <x-nav-link href="#" class="hover:bg-blue-600 hover:text-white px-4 py-2 rounded text-white">
+                <x-nav-link href="{{route('viewdoctors')}}" :active="request()->routeIs('viewdoctors')" class="hover:bg-blue-600 hover:text-white px-4 py-2 rounded text-white">
                     {{ __('Doctors') }}
                 </x-nav-link>
                 <x-nav-link href="#" class="hover:bg-blue-600 hover:text-white px-4 py-2 rounded text-white">
