@@ -77,10 +77,11 @@
                     <div class="doctor-info">
                         <strong>Experience:</strong> {{ $doctor->experience }} years
                     </div>
+                 
                     <div class="">
                         <a href="{{ route('doctors.show',$doctor->id) }}">
                             <button style="background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
-                                View Schedule
+                                Doctor Profile
                             </button>
                         </a>
                     </div>
