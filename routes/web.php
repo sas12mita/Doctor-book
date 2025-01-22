@@ -20,17 +20,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::middleware(['auth', 'verified'])->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard/admin', [DashboardController::class, 'admin']) ->middleware(['auth', 'verified', 'role:admin']) ->name('dashboards.admin');
+Route::get('/dashboard/patient', [DashboardController::class, 'patient'])->middleware(['role:patient']) ->name('dashboards.patient');
+Route::get('/dashboard/doctor', [DashboardController::class, 'doctor'])->middleware(['auth', 'verified', 'role:doctor'])->name('dashboards.doctor');
+
 Route::resource('patients', PatientController::class);
 Route::resource('doctors', DoctorController::class)->middleware('role:admin,patient');
 Route::resource('appointments', AppointmentController::class)->middleware('role:admin,patient');
 Route::resource('schedules', ScheduleController::class)->middleware('role:admin,patient');
 Route::resource('specilizations', SpecializationController::class);
 Route::resource('patientreports', PatientReportController::class);
-Route::get('/viewdoctors',[HomeController::class, 'doctor'])->name('viewdoctors');
+Route::get('/viewdoctors', [HomeController::class, 'doctor'])->name('viewdoctors');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,4 +40,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

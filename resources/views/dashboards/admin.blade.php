@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<x-app-layout>
 <html lang="en">
 
 <head>
@@ -59,20 +59,24 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Card 1 -->
                 <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-lg font-bold text-gray-800">Total Users</h3>
-                    <p class="text-2xl font-semibold text-green-600 mt-2">1,234</p>
+                    <h3 class="text-lg font-bold text-gray-800">Total Doctor</h3>
+                    <p class="text-2xl font-semibold text-green-600 mt-2">{{$doctorCount}}</p>
                 </div>
 
                 <!-- Card 2 -->
                 <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-lg font-bold text-gray-800">Total Sales</h3>
-                    <p class="text-2xl font-semibold text-blue-600 mt-2">$12,345</p>
+                    <h3 class="text-lg font-bold text-gray-800">Total Patient </h3>
+                    <p class="text-2xl font-semibold text-blue-600 mt-2">{{$patientCount}}</p>
                 </div>
 
                 <!-- Card 3 -->
                 <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-lg font-bold text-gray-800">Pending Tasks</h3>
-                    <p class="text-2xl font-semibold text-red-600 mt-2">8</p>
+                    <h3 class="text-lg font-bold text-gray-800">Total Appointment</h3>
+                    <p class="text-2xl font-semibold text-red-600 mt-2">{{$appointmentCount}}</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-bold text-gray-800">Total Schedule</h3>
+                    <p class="text-2xl font-semibold text-red-600 mt-2">{{$scheduleCount}}</p>
                 </div>
             </div>
         </main>
@@ -80,3 +84,4 @@
 </body>
 
 </html>
+</x-app-layout>

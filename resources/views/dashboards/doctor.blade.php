@@ -1,4 +1,4 @@
- <x-app-layout>
+<x-app-layout>
 <html lang="en">
 
 <head>
@@ -75,7 +75,7 @@
                         </p>
 
                         <p class="text-sm text-gray-600">
-                            <strong>Doctor:</strong> {{$appointment->doctor->user->name}}
+                            <strong>Patient's Name:</strong> {{$appointment->patient->user->name}}
                         </p>
                     </div>
                 </div>

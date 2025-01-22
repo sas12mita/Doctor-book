@@ -6,7 +6,6 @@ use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Schedule;
 use App\Services\TimeSlotService;
-use id;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,13 +18,17 @@ class AppointmentController extends Controller
      */
     public function index()
     {
+        $id=Auth::user()->id;
         if(Auth::user()->role=="admin")
         {
-
+            $appointment=Appointment::all();
+            return view('appointments.index',compact('appointment'));
         }
         elseif(Auth::user()->role=="patient")
         {
-            
+            $appointments=Appointment::where('patient_id',' Auth::user()->patient->id')->get();
+            dd($appointments);
+            return redirect()->route('dashboards.patient',compact('appointment'));
         }
         elseif(Auth::user()->role=="doctor")
         {
