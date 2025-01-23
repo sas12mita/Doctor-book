@@ -1,14 +1,16 @@
 <x-app-layout>
-<html lang="en">
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <style>
-          /* Basic Reset */
-          * {
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Dashboard</title>
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+        <style>
+            /* Basic Reset */
+            * {
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
@@ -52,12 +54,70 @@
             .sidebar i {
                 margin-right: 10px;
             }
-    </style>
-</head>
 
-<body class="bg-gray-100">
-<div class="flex">
-            <!-- Sidebar -->
+            /* Main Content */
+            .main-content {
+                margin-left: 10px;
+                padding: 2px;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: #2d3748;
+                margin-bottom: 20px;
+            }
+
+            /* Table Styles */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+
+            th,
+            td {
+                padding-left: 20px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                text-align: left;
+                border-bottom: 3px solid #ddd;
+            }
+
+            th {
+                background-color: #4a5568;
+                color: white;
+
+            }
+
+            tr:hover {
+                background-color: #edf2f7;
+            }
+
+            /* Action buttons container */
+            .action-btns {
+                display: flex;
+                gap: 16px;
+            }
+
+            .action-btn {
+                color: white;
+                padding: 5px 10px;
+                border-radius: 5px;
+                text-decoration: none;
+                transition: background-color 0.3s;
+            }
+
+            .action-btn:hover {
+                background-color: #4a5568;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="flex">
             <aside class="sidebar">
                 <nav>
                     <ul>
@@ -79,7 +139,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('specilizations.index')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                            <a href="{{route('specializations.index')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
                                 <i class="fa-solid fa-graduation-cap"></i>
                                 <span>Specialization</span>
                             </a>
@@ -97,39 +157,10 @@
                             </a>
                         </li>
                     </ul>
-           </nav>
-        </aside>
+                </nav>
+            </aside>
+        </div>
+    </body>
 
-        <!-- Main Content -->
-        <main class="flex-1 p-6">
-            <h2 class="text-xl font-semibold text-gray-800 mb-4">Welcome, Admin</h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-lg font-bold text-gray-800">Total Doctor</h3>
-                    <p class="text-2xl font-semibold text-green-600 mt-2">{{$doctorCount}}</p>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-lg font-bold text-gray-800">Total Patient </h3>
-                    <p class="text-2xl font-semibold text-blue-600 mt-2">{{$patientCount}}</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-lg font-bold text-gray-800">Total Appointment</h3>
-                    <p class="text-2xl font-semibold text-red-600 mt-2">{{$appointmentCount}}</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-lg font-bold text-gray-800">Total Schedule</h3>
-                    <p class="text-2xl font-semibold text-red-600 mt-2">{{$scheduleCount}}</p>
-                </div>
-            </div>
-        </main>
-    </div>
-</body>
-
-</html>
+    </html>
 </x-app-layout>

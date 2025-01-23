@@ -15,40 +15,27 @@
     <nav class="py-6">
         <ul>
             <li>
-                <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                <a href="{{route('dashboards.patient')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
                     <i class="fas fa-home"></i>
                     <span class="ml-2">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="{{route('doctors.index')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                <a href="{{route('viewdoctors')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
                     <i class="fas fa-users"></i>
                     <span class="ml-2">Doctors</span>
                 </a>
             </li>
+        
+           
             <li>
-                <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700">
-                    <i class="fas fa-users"></i>
-                    <span class="ml-2">Patients</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span class="ml-2">Specializations</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{route('schedules.index')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                <a href="{{route('schedules.show')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
                     <i class="fas fa-calendar"></i>
                     <span class="ml-2">Schedules</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700">
-                    <i class="fas fa-calendar-alt"></i>
-                    <span class="ml-2">Appointments</span>
-                </a>
+              
             </li>
         </ul>
     </nav>

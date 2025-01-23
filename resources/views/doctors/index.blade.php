@@ -121,7 +121,7 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                            <a href="{{route('dashboards.admin')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
                                 <i class="fas fa-home"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -132,25 +132,25 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                            <a href="{{route('patients.index')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
                                 <i class="fas fa-users"></i>
                                 <span>Patient</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                            <a href="{{route('specializations.index')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
                                 <i class="fa-solid fa-graduation-cap"></i>
                                 <span>Specialization</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                            <a href="{{route('schedules.index')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
                                 <i class="fas fa-calendar"></i>
                                 <span>Schedule</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                            <a href="{{route('appointments.index')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
                                 <i class="fa-solid fa-calendar"></i>
                                 <span>Appointment</span>
                             </a>
