@@ -4,23 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Specialization;
 use Illuminate\Http\Request;
+use Symfony\Component\CssSelector\Node\Specificity;
 
 class SpecializationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        
-    }
+  
+     public function index()
+     {
+         $specializations = Specialization::all();
+         return view('specializations.index', compact('specializations'));
+     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('specializations.create');
     }
 
     /**
@@ -28,7 +31,10 @@ class SpecializationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Specialization::create([
+            'name' => $request->input('name'),
+        ]);
+        return redirect()->route('specializations.index')->with('success', 'Specialization created successfully.');
     }
 
     /**
@@ -36,7 +42,7 @@ class SpecializationController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
@@ -44,7 +50,9 @@ class SpecializationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $specialization=Specialization::findOrFail($id);
+        return view('specializations.edit', compact('specialization'));
+   
     }
 
     /**
@@ -52,7 +60,10 @@ class SpecializationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $specialization=Specialization::findOrFail($id);
+        $specialization->update($request->all());
+    return redirect()->route('specializations.index')->with('success', 'Post updated successfully.');
+
     }
 
     /**
@@ -60,6 +71,8 @@ class SpecializationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $specialization=Specialization::findOrFail($id);
+        $specialization->delete();
+        return redirect()->route('specializations.index')->with('success', 'Post deleted successfully.');
     }
 }

@@ -30,7 +30,7 @@ Route::resource('patients', PatientController::class);
 Route::resource('doctors', DoctorController::class)->middleware('role:admin,patient');
 Route::resource('appointments', AppointmentController::class)->middleware('role:admin,patient');
 Route::resource('schedules', ScheduleController::class)->middleware('role:admin,patient');
-Route::resource('specilizations', SpecializationController::class);
+Route::resource('specializations', SpecializationController::class);
 Route::resource('patientreports', PatientReportController::class);
 Route::get('/viewdoctors', [HomeController::class, 'doctor'])->name('viewdoctors');
 

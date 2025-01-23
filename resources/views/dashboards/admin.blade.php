@@ -79,7 +79,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('specilizations.index')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                            <a href="{{route('specializations.index')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
                                 <i class="fa-solid fa-graduation-cap"></i>
                                 <span>Specialization</span>
                             </a>
