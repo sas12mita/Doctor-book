@@ -21,19 +21,10 @@ class AppointmentController extends Controller
         $id=Auth::user()->id;
         if(Auth::user()->role=="admin")
         {
-            $appointment=Appointment::all();
-            return view('appointments.index',compact('appointment'));
+            $appointments=Appointment::all();
+            return view('appointments.index',compact('appointments'));
         }
-        elseif(Auth::user()->role=="patient")
-        {
-            $appointments=Appointment::where('patient_id',' Auth::user()->patient->id')->get();
-            dd($appointments);
-            return redirect()->route('dashboards.patient',compact('appointment'));
-        }
-        elseif(Auth::user()->role=="doctor")
-        {
-
-        }else{
+        else{
             return false;
         }
     }
@@ -84,8 +75,7 @@ class AppointmentController extends Controller
             $appointment->status = 'pending'; // You can set an initial status
             $appointment->save();
     
-            // Redirect with a success message
-            return redirect()->route('appointments.index')->with('success', 'Appointment booked successfully.');
+                    return redirect()->route('dashboards.patient')->with('success', 'Appointment booked successfully.');
         }
     
 
@@ -110,7 +100,17 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if(Auth::user()->role=="doctor")
+        {
+            $appointment = Appointment::find($id);
+            $appointment->status = 'booked';
+            $appointment->save();
+            return redirect()->route('dashboards.doctor');
+        }
+        if(Auth::user()->role="patient")
+        {
+        
+        }
     }
 
     /**

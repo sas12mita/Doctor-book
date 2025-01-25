@@ -218,7 +218,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" id="qualification" name="qualification" required>
+                                <input type="password" id="password" name="password" required>
                             </div>
                             <div class="form-group">
                                 <label for="password_confirmation">Confirm Password</label>
@@ -249,6 +249,15 @@
                                 <input type="text" id="address" name="address" required>
                             </div>
                         </div>
+                        @if ($errors->any())
+                        <div class="alert alert-danger" style="color:red">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
 
 
 

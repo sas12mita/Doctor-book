@@ -33,8 +33,8 @@ class DashboardController extends Controller
     }
     public function doctor()
     {
-        $appintments=Appointment::where('patient_id',Auth::user()->doctor->id)->get();
-        return view('dashboards.patient',compact('appointments'));
+        $appointments=Appointment::where('doctor_id',Auth::user()->doctor->id)->get();
+        return view('dashboards.doctor',compact('appointments'));
     }
     public function admin()
     {

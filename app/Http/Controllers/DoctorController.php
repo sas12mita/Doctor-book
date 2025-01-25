@@ -41,14 +41,14 @@ class DoctorController extends Controller
     public function store(Request $request)
     {
        
-        // $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-        //     'password' => ['required', 'confirmed', Password::defaults()],
-        //     'address' => ['required', 'string', 'max:255'],
-        //     'phone' => ['required', 'string', 'max:10','min:10'],
-        //     'role' => ['required', 'in:patient,doctor,admin'],
-        // ]);
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => 'required|confirmed|min:8',
+            'address' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:10','min:10'],
+            'role' => ['required', 'in:patient,doctor,admin'],
+        ]);
         
         $user = User::create([
             'name' => $request->name,

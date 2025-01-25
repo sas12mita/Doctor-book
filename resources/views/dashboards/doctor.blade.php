@@ -6,6 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin Dashboard</title>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+        <style>
+            li a span {
+                margin: 10px;
+            }
+        </style>
     </head>
 
     <body class="bg-gray-100">
@@ -27,7 +32,10 @@
                             </a>
                         </li>
                         <li>
-
+                            <a href="{{route('profile.edit')}}" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                                <i class="fas fa-user"></i>
+                                <span class="ml-2"> Profile</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -64,17 +72,28 @@
                                 <p class="text-sm text-gray-500">
                                     <strong>Time:</strong> {{\Carbon\Carbon::parse($appointment->start_time)->format('h:i A')}}
                                 </p>
-                                <p> @if($appointment->status == 'pending')
-                                    <span style="color:red">{{$appointment->status}}</span>
-                                    @elseif($appointment->status == 'booked')
-                                    <span style="color:blue">{{$appointment->status}}</span>
-                                    @endif
+                                <p>
+                                    @if($appointment->status == 'pending')
+                                <form action="{{ route('appointments.update', $appointment->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" name="status" value="booked">
+                                    <button
+                                        type="submit"
+                                        style="background-color: red; color: white; padding: 5px;"
+                                        onclick="return confirm('Are you sure you want to mark this appointment as booked?')">
+                                        Mark as Booked
+                                    </button>
+                                </form>
+                                @elseif($appointment->status == 'booked')
+                                <span style="color:blue">{{$appointment->status}}</span>
+                                @endif
                                 </p>
                             </div>
                         </div>
                         <br>
                         @empty
-                        <span style="font-size: 14px; color: #888;">No slots available</span>
+                        <span style="font-size: 14px; color: #888;">No appointment available</span>
                         @endforelse
 
                     </div>

@@ -29,7 +29,7 @@ class EnsureUserIsAuthenticated
 
         // Check if the user's role matches the required roles
         if (!empty($roles) && !in_array($user->role, $roles)) {
-            return redirect()->route('home')->with('error', 'You do not have permission to access this page.');
+            return redirect('/');
         }
 
         // Allow the request to proceed

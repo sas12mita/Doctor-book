@@ -28,7 +28,7 @@ Route::get('/dashboard/doctor', [DashboardController::class, 'doctor'])->middlew
 
 Route::resource('patients', PatientController::class);
 Route::resource('doctors', DoctorController::class)->middleware('role:admin,patient');
-Route::resource('appointments', AppointmentController::class)->middleware('role:admin,patient');
+Route::resource('appointments', AppointmentController::class)->middleware('role:admin,patient,doctor');
 Route::resource('schedules', ScheduleController::class)->middleware('role:admin,patient');
 Route::resource('specializations', SpecializationController::class);
 Route::resource('patientreports', PatientReportController::class);
